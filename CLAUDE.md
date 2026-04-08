@@ -69,11 +69,17 @@ All page sections are reusable components accepting props for customization:
 - [x] Complete operator docs (system-overview.md)
 - [ ] Set up Sanity project at sanity.io and configure credentials
 
+## Testing Infrastructure
+- **Unit Tests**: Vitest - run with `npm run test`
+- **CI**: GitHub Actions - `.github/workflows/ci.yml`
+- **Test Files**: `src/__tests__/`
+
 ## Quick Reference
 - Docs: `/docs/` contains architecture and planning docs
 - Components: `/src/components/` - reusable page sections
 - CMS config: `/src/sanity/` - schema definitions
 - Run dev: `npm run dev` (after `npm install`)
+- Test: `npm run test:run`
 
 ## Contact
 For questions, check parent issue [COR-9](/COR/issues/COR-9) and goal [COR-Goal](/COR/goals/c0035e40-53d9-42c7-99c1-09bb73eb90ae)
