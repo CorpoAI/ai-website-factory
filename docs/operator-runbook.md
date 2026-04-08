@@ -42,33 +42,30 @@ Collect from client:
 # Go to sanity.io, create project, get project ID
 
 # Update environment
+cp .env.example .env.local
+# Edit .env.local with:
 NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
 NEXT_PUBLIC_SANITY_DATASET=production
 
-# Push schema to Sanity
-# (Run in Sanity Studio after deployment)
+# Install dependencies
+npm install
+
+# Seed template data (choose one)
+npm run seed construction
+# OR
+npm run seed restaurant
 ```
 
-### Step 3: Content Entry (1-2 hrs)
+### Step 3: Customize (30 min)
 
 In Sanity Studio:
-1. Create site settings (logo, contact info)
-2. Create home page
-3. Add sections in order:
-   - Hero
-   - About
-   - Services
-   - Testimonials
-   - FAQ
-   - Contact
-   - CTA
-4. Fill in all fields with client content
+1. Edit site settings (company name, logo, contact info)
+2. Update page content with client's specific information
+3. Add custom images
 
-### Step 4: Customize (30 min)
-
+Also customize:
 ```bash
 # Edit tailwind.config.js for brand colors
-# Update template defaults in src/templates/[type]/defaults.ts
 ```
 
 ### Step 5: Deploy (15 min)
@@ -178,7 +175,20 @@ Check:
 | Task | Time |
 |------|------|
 | New client setup | 15 min |
-| Content entry | 1-2 hrs |
+| Content entry (seeded) | 15-30 min |
 | Customization | 30 min |
 | Deploy | 15 min |
-| **Total** | **~2-3 hrs** |
+| **Total** | **~1.5-2 hrs** |
+
+---
+
+## Seed Script
+
+Pre-populate Sanity with template defaults:
+
+```bash
+npm run seed construction    # German construction template
+npm run seed restaurant      # German restaurant template
+```
+
+This creates site settings and a complete home page with all sections pre-filled in German. Just customize with client's specific content.

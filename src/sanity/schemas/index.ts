@@ -9,6 +9,8 @@ import faq from './faq'
 import contact from './contact'
 import cta from './cta'
 
+import contactSubmission from './contactSubmission'
+
 export const schemaTypes = [
   page,
   siteSettings,
@@ -20,6 +22,7 @@ export const schemaTypes = [
   faq,
   contact,
   cta,
+  contactSubmission,
 ]
 
 export const schema = { types: schemaTypes }
