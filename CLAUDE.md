@@ -1,9 +1,9 @@
 # CLAUDE.md - AI Website Factory
 
 ## Project Purpose
-Build a production-ready, reusable website system for small/medium businesses in Poland and Germany. The system enables fast delivery of client websites with reusable templates, clean structure, easy content editing via Sanity CMS, and low maintenance overhead.
+Build a production-ready, reusable website system for small/medium businesses in Poland and Germany. The system enables fast delivery of client websites with reusable templates, clean structure, easy content editing via Sanity CMS, and low maintenance overhead. Target: 90% automated delivery at €750-1,200 one-time + €50-75/month.
 
-## Architecture Rules
+## Architecture
 
 ### Stack
 - Next.js 14 (App Router)
@@ -15,11 +15,13 @@ Build a production-ready, reusable website system for small/medium businesses in
 ### Folder Structure
 ```
 /src
-  /app          - Next.js pages and routes
-  /components   - Reusable UI components (Hero, About, Services, etc.)
-  /lib          - Utilities, Sanity client, helpers
-  /sanity       - CMS schemas and configuration
-  /types        - TypeScript type definitions
+  /app              - Next.js pages (home, dynamic, blog, studio, api)
+  /components      - 10 reusable UI components
+  /lib             - Utilities, Sanity client
+  /sanity/schemas  - 12 CMS content schemas
+  /templates       - Template defaults (German)
+  /config          - Site configuration
+/scripts           - Automation scripts (seed, setup-client)
 ```
 
 ### Component Pattern
@@ -33,8 +35,9 @@ All page sections are reusable components accepting props for customization:
 - All text content (headings, body, labels)
 - Contact information
 - Service lists, testimonials, FAQ items
+- Blog posts
+- Gallery images
 - SEO metadata
-- Images via media manager
 
 **Code-only:**
 - Component structure and styling
@@ -47,6 +50,7 @@ All page sections are reusable components accepting props for customization:
 2. **Simplicity over flexibility** - Don't over-engineer for hypothetical future needs
 3. **Type safety** - Use TypeScript for all components and data
 4. **Defaults matter** - Provide sensible defaults so components work out-of-box
+5. **Fast delivery over technical purity** - Get sites live quickly
 
 ## What NOT to Do
 - Don't create custom CMS schemas for every edge case
@@ -54,32 +58,29 @@ All page sections are reusable components accepting props for customization:
 - Don't build a design system before there's demand
 - Don't assume a large engineering team will maintain this
 
-## Current Priorities
-1. Complete baseline Next.js setup
-2. Add Tailwind CSS to existing components
-3. Create Sanity schemas matching docs/sanity-content-model.md
-4. Implement dynamic page routing with Sanity data
-5. Configure Vercel deployment (optional)
+## Components Available
+- Hero, About, Services, Testimonials, FAQ, Contact, CTA, Footer
+- Gallery (new), Seo
 
-## Pending Tasks
-- [x] Add Tailwind CSS configuration
-- [x] Create Sanity schema files (page, siteSettings, hero, services, etc.)
-- [x] Implement Sanity client and GROQ queries
-- [x] Create dynamic route [slug]/page.tsx
-- [x] Complete operator docs (system-overview.md)
-- [ ] Set up Sanity project at sanity.io and configure credentials
+## Scripts
+| Command | Purpose |
+|---------|---------|
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run seed construction` | Seed German construction template |
+| `npm run seed restaurant` | Seed German restaurant template |
+| `npm run setup` | Interactive client setup |
 
-## Testing Infrastructure
+## Testing
 - **Unit Tests**: Vitest - run with `npm run test`
 - **CI**: GitHub Actions - `.github/workflows/ci.yml`
-- **Test Files**: `src/__tests__/`
 
-## Quick Reference
-- Docs: `/docs/` contains architecture and planning docs
-- Components: `/src/components/` - reusable page sections
-- CMS config: `/src/sanity/` - schema definitions
-- Run dev: `npm run dev` (after `npm install`)
-- Test: `npm run test:run`
+## Environment Variables
+Required in `.env.local`:
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`
+- `NEXT_PUBLIC_SANITY_DATASET`
 
-## Contact
-For questions, check parent issue [COR-9](/COR/issues/COR-9) and goal [COR-Goal](/COR/goals/c0035e40-53d9-42c7-99c1-09bb73eb90ae)
+## Documentation
+- `/docs/` - Full documentation (operator-runbook, deployment-guide, product-model, etc.)
+- Components: `/src/components/`
+- CMS config: `/src/sanity/schemas/`

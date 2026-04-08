@@ -9,6 +9,8 @@ import faq from './faq'
 import contact from './contact'
 import cta from './cta'
 
+import post from './post'
+import gallery from './gallery'
 import contactSubmission from './contactSubmission'
 
 export const schemaTypes = [
@@ -22,6 +24,8 @@ export const schemaTypes = [
   faq,
   contact,
   cta,
+  post,
+  gallery,
   contactSubmission,
 ]
 
