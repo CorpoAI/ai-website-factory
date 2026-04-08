@@ -2,14 +2,11 @@
 
 ## 1. Current Deployment Status
 
-**Status**: Not yet deployed to Vercel
+**Status**: ✅ Ready for Vercel deployment
 
-The website factory project has been built locally but requires the following before deployment:
-
-- Run `npm install` to install dependencies
-- Add Sanity credentials to `.env.local`
-- Connect repository to Vercel
-- Push to GitHub to trigger deployment
+- Sanity project: `1nckieb7`
+- Dataset: `production`
+- Build: ✅ Passing
 
 ## 2. Last Changes / Commits
 
@@ -114,14 +111,11 @@ npm run test:coverage  # with coverage
 
 | Item | Status |
 |------|--------|
-| Local development | ✅ Ready (needs `npm install`) |
-| Vercel deployment | ⏳ Requires push to GitHub |
-| Unit tests | ✅ Configured (needs dependencies) |
-| E2E tests | ❌ Manual for MVP |
-| Sanity CMS | ⚠️ Needs credentials |
+| Local development | ✅ Ready |
+| Vercel deployment | ✅ Ready |
+| Unit tests | ✅ Configured |
+| Sanity CMS | ✅ Connected |
 
 **Next steps**:
-1. Run `npm install` in workspace
-2. Add Sanity credentials
-3. Push to GitHub
-4. Deploy to Vercel
+1. Push to GitHub
+2. Deploy to Vercel
