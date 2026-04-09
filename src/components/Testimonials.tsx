@@ -29,7 +29,7 @@ export default function Testimonials({
             key={index} 
             className="p-8 bg-gray-50 rounded-xl border-l-4 border-indigo-500"
           >
-            <p className="text-base leading-relaxed mb-6 italic">"{testimonial.text}"</p>
+            <p className="text-base leading-relaxed mb-6 italic">&quot;{testimonial.text}&quot;</p>
             <div>
               <strong className="block text-lg">{testimonial.name}</strong>
               <span className="text-gray-500">{testimonial.role}</span>

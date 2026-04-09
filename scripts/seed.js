@@ -46,6 +46,7 @@ const templates = {
     pages: [
       {
         _type: 'page',
+        _id: 'page-home',
         title: 'Startseite',
         slug: { _type: 'slug', current: 'home' },
         sections: [
@@ -116,6 +117,7 @@ const templates = {
     pages: [
       {
         _type: 'page',
+        _id: 'page-home',
         title: 'Startseite',
         slug: { _type: 'slug', current: 'home' },
         sections: [

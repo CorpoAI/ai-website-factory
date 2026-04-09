@@ -124,7 +124,7 @@ export default function Contact({
           </button>
 
           {status === 'success' && (
-            <p className="text-green-600 text-center">Thank you! We'll contact you soon.</p>
+            <p className="text-green-600 text-center">Thank you! We&apos;ll contact you soon.</p>
           )}
           {status === 'error' && (
             <p className="text-red-600 text-center">Something went wrong. Please try again.</p>
