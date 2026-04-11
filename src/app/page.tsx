@@ -10,6 +10,9 @@ import Footer from '@/components/Footer'
 import { getPage } from '@/lib/sanity'
 import { generateMetadata } from '@/components/Seo'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 60
+
 export const metadata = generateMetadata({})
 
 export default async function Home() {

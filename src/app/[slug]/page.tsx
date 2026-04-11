@@ -38,6 +38,9 @@ interface Section {
   address?: string
 }
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 60
+
 function renderSection(section: Section) {
   switch (section._type) {
     case 'hero':

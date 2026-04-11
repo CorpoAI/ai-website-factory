@@ -169,11 +169,7 @@ const templates = {
           {
             _type: 'gallery',
             title: 'Einblicke in unser Haus',
-            images: [
-              { _type: 'image', asset: { _type: 'reference', _ref: 'demo-1' }, alt: 'Restaurant Interior', caption: 'Unser gemütlicher Gastraum' },
-              { _type: 'image', asset: { _type: 'reference', _ref: 'demo-2' }, alt: 'Terrasse', caption: 'Terrasse im Sommer' },
-              { _type: 'image', asset: { _type: 'reference', _ref: 'demo-3' }, alt: 'Schweinshaxe', caption: 'Unsere berühmte Schweinshaxe' },
-            ],
+            images: [],
           },
           {
             _type: 'contact',
@@ -205,11 +201,11 @@ async function seed() {
 
   try {
     console.log('Creating site settings...')
-    await client.createIfNotExists(data.siteSettings)
+    await client.createOrReplace(data.siteSettings)
 
     for (const page of data.pages) {
       console.log(`Creating page: ${page.title}...`)
-      await client.createIfNotExists(page)
+      await client.createOrReplace(page)
     }
 
     console.log('✓ Seed completed successfully!')
