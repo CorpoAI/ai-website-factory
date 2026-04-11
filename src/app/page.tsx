@@ -5,6 +5,7 @@ import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
 import Contact from '@/components/Contact'
 import CTA from '@/components/CTA'
+import Gallery from '@/components/Gallery'
 import Footer from '@/components/Footer'
 import { getPage } from '@/lib/sanity'
 import { generateMetadata } from '@/components/Seo'
@@ -47,6 +48,8 @@ export default async function Home() {
             return <Contact key={i} {...section} />
           case 'cta':
             return <CTA key={i} {...section} />
+          case 'gallery':
+            return <Gallery key={i} {...section} />
           default:
             return null
         }

@@ -5,6 +5,7 @@ import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
 import Contact from '@/components/Contact'
 import CTA from '@/components/CTA'
+import Gallery from '@/components/Gallery'
 import Footer from '@/components/Footer'
 import { getPage } from '@/lib/sanity'
 
@@ -25,6 +26,12 @@ interface Section {
     role?: string
     question?: string
     answer?: string
+  }>
+  images?: Array<{
+    _key?: string
+    asset?: any
+    alt?: string
+    caption?: string
   }>
   email?: string
   phone?: string
@@ -69,6 +76,8 @@ function renderSection(section: Section) {
           buttonLink={section.buttonLink}
         />
       )
+    case 'gallery':
+      return <Gallery title={section.title} images={(section as any).images} />
     default:
       return null
   }
