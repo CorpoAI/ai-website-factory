@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   experimental: {
     optimizePackageImports: ['@sanity/icons'],
   },
   images: {
-    domains: ['cdn.sanity.io', 'localhost'],
+    unoptimized: true,
   },
 }
 

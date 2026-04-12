@@ -3,15 +3,17 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Ihre Website',
-    template: '%s | Ihre Website',
+    default: 'Zum goldenen Hirschen | Traditionelle bayerische Küche in München',
+    template: '%s | Zum goldenen Hirschen',
   },
-  description: 'Professionelle Website für Ihr Unternehmen',
-  metadataBase: new URL('https://example.com'),
+  description: 'Genießen Sie traditionelle bayerische Küche in gemütlicher Atmosphäre. Seit 1952 Familientradition in München. Reservieren Sie jetzt Ihren Tisch!',
+  metadataBase: new URL('https://zum-goldenen-hirschen.de'),
   openGraph: {
     type: 'website',
     locale: 'de_DE',
-    siteName: 'Ihre Website',
+    siteName: 'Zum goldenen Hirschen',
+    title: 'Zum goldenen Hirschen | Traditionelle bayerische Küche in München',
+    description: 'Genießen Sie traditionelle bayerische Küche in gemütlicher Atmosphäre. Seit 1952 Familientradition.',
   },
 }
 

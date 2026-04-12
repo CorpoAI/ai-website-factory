@@ -7,9 +7,9 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  template: 'construction',
-  siteName: 'My Business',
-  tagline: 'Professional Services',
-  primaryColor: '#4F46E5', // indigo-600
-  secondaryColor: '#7C3AED', // purple-600
+  template: 'restaurant',
+  siteName: 'Zum goldenen Hirschen',
+  tagline: 'Traditionelle bayerische Küche mit Herz',
+  primaryColor: '#d97706',
+  secondaryColor: '#92400e',
 }
