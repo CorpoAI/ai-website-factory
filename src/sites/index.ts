@@ -3,6 +3,7 @@ import budmax from './budmax-krakow'
 import nowak from './nowak-remonty-wroclaw'
 import ogien from './ogien-warszawa'
 import trattoria from './trattoria-gdansk'
+import prawko from './osk-prawko-warszawa'
 
 /**
  * Site registry. `npm run new-site` adds new entries here automatically.
@@ -13,6 +14,7 @@ export const SITES: SiteConfig[] = [
   nowak,
   trattoria,
   ogien,
+  prawko,
   // @new-site
 ]
 

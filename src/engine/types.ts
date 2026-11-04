@@ -8,7 +8,7 @@
  */
 
 export type Locale = 'pl' | 'de' | 'en'
-export type Industry = 'construction' | 'restaurant'
+export type Industry = 'construction' | 'restaurant' | 'driving-school'
 
 /** An image is optional everywhere — sections fall back to a styled placeholder. */
 export interface ImageRef {
@@ -47,7 +47,7 @@ export interface BusinessInfo {
   rating?: { value: number; count: number; source?: string }
 }
 
-export type ThemePreset = 'industrial' | 'modern-build' | 'bistro' | 'fine-dining'
+export type ThemePreset = 'industrial' | 'modern-build' | 'bistro' | 'fine-dining' | 'road'
 
 export interface ThemeConfig {
   preset: ThemePreset
@@ -205,6 +205,68 @@ export interface EventsSection {
   items: { title: string; date: string; description: string }[]
 }
 
+/* ---------------- Driving school ---------------- */
+
+/** Official pass rates vs. regional average — the #1 decision factor for students. */
+export interface PassRateSection {
+  type: 'passRate'
+  title: string
+  subtitle?: string
+  /** e.g. "Kat. B · I–III kw. 2026" */
+  period: string
+  rows: { label: string; school: number; region: number }[]
+  /** Where the numbers come from — always cite the official report */
+  source: string
+  sourceUrl?: string
+}
+
+export interface CourseItem {
+  id: string
+  /** Category code shown as a big badge: "B", "A", "C+E" */
+  code: string
+  name: string
+  description?: string
+  price: number
+  /** e.g. ["30 h teorii", "30 h jazd"] */
+  includes: string[]
+  /** Upcoming start dates (ISO yyyy-mm-dd) */
+  starts?: { date: string; seatsLeft?: number; mode?: string }[]
+  badge?: string
+  installments?: boolean
+}
+
+export interface CoursesSection {
+  type: 'courses'
+  title: string
+  subtitle?: string
+  currency: 'PLN' | 'EUR'
+  items: CourseItem[]
+  /** Price of one extra driving hour */
+  extraHourPrice?: number
+}
+
+/** Total cost of getting a licence: course + state exam fees + medical etc. */
+export interface LicenceCostSection {
+  type: 'licenceCost'
+  title: string
+  subtitle?: string
+  currency: 'PLN' | 'EUR'
+  /** State fees (set per voivodeship) */
+  fees: { label: string; amount: number; perAttempt?: boolean }[]
+  /** Course to preselect (id from CoursesSection) */
+  defaultCourse?: string
+  note?: string
+}
+
+export interface TeamSection {
+  type: 'team'
+  title: string
+  subtitle?: string
+  members: { name: string; role: string; bio?: string; photo?: ImageRef; facts?: string[] }[]
+  /** Optional fleet / equipment strip */
+  fleet?: { name: string; detail: string; image?: ImageRef }[]
+}
+
 export interface FAQSection {
   type: 'faq'
   title: string
@@ -243,6 +305,10 @@ export type Section =
   | FeaturesSection
   | EventsSection
   | FAQSection
+  | PassRateSection
+  | CoursesSection
+  | LicenceCostSection
+  | TeamSection
   | CTASection
   | ContactSection
 

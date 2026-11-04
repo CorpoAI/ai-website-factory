@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-export type LeadKind = 'contact' | 'quote' | 'reservation'
+export type LeadKind = 'contact' | 'quote' | 'reservation' | 'enrollment'
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
 /** Shared submit logic for every lead-generating section (contact, quote, reservation). */

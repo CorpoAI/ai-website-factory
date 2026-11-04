@@ -37,11 +37,11 @@ export function Hero({ section: s, site, d }: SectionProps<HeroSection>) {
   if (variant === 'split') {
     return (
       <section className="relative overflow-hidden pt-24 lg:pt-28">
-        <div className="container-site grid gap-10 pb-16 lg:grid-cols-12 lg:gap-12 lg:pb-24">
+        <div className="container-site grid grid-cols-1 gap-10 pb-16 lg:grid-cols-12 lg:gap-12 lg:pb-24">
           <div className="flex flex-col justify-between lg:col-span-7">
             <div>
               {s.eyebrow && <p className="eyebrow mb-8 text-ink-muted animate-rise-in">{s.eyebrow}</p>}
-              <h1 className="text-[3.2rem] sm:text-7xl lg:text-[6.6rem] animate-rise-in [animation-delay:120ms]">
+              <h1 className="text-[calc(3.2rem*var(--display-scale,1))] sm:text-[calc(4.5rem*var(--display-scale,1))] lg:text-[calc(6.6rem*var(--display-scale,1))] animate-rise-in [animation-delay:120ms]">
                 <Rich text={s.title} />
               </h1>
             </div>
@@ -100,7 +100,7 @@ export function Hero({ section: s, site, d }: SectionProps<HeroSection>) {
         {s.eyebrow && <p className="eyebrow mb-6 text-white/75 animate-rise-in">{s.eyebrow}</p>}
         <h1
           className={`animate-rise-in [animation-delay:120ms] [&_em]:[filter:var(--hero-em-filter)] ${
-            centered ? 'max-w-5xl text-[3.2rem] sm:text-7xl lg:text-[7.5rem]' : 'max-w-[15ch] text-[3.2rem] sm:text-7xl lg:text-[7.5rem]'
+            centered ? 'max-w-5xl text-[calc(3.2rem*var(--display-scale,1))] sm:text-[calc(4.5rem*var(--display-scale,1))] lg:text-[calc(7.5rem*var(--display-scale,1))]' : 'max-w-[15ch] text-[calc(3.2rem*var(--display-scale,1))] sm:text-[calc(4.5rem*var(--display-scale,1))] lg:text-[calc(7.5rem*var(--display-scale,1))]'
           }`}
         >
           <Rich text={s.title} />
@@ -302,7 +302,7 @@ export function Features({ section: s }: SectionProps<FeaturesSection>) {
         <h2 className="h2 mb-14 max-w-3xl" data-reveal>
           <Rich text={s.title} />
         </h2>
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           {s.items.map((i, idx) => (
             <article key={i.title} className="group" data-reveal style={{ ['--d' as string]: `${idx * 120}ms` }}>
               <div className="grain relative mb-6 aspect-[4/3] overflow-hidden rounded-theme">
@@ -326,7 +326,7 @@ export function Features({ section: s }: SectionProps<FeaturesSection>) {
 export function Events({ section: s, site }: SectionProps<EventsSection>) {
   return (
     <section id={s.id} className="section">
-      <div className="container-site grid gap-12 lg:grid-cols-12">
+      <div className="container-site grid grid-cols-1 gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Kicker index={navIndex(site, s.id)} label={s.nav} />
           <h2 className="h2" data-reveal>
@@ -366,7 +366,7 @@ export function FAQ({ section: s, site }: SectionProps<FAQSection>) {
   const phone = site.business.phone
   return (
     <section id={s.id} className="section">
-      <div className="container-site grid gap-12 lg:grid-cols-12">
+      <div className="container-site grid grid-cols-1 gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <h2 className="h2" data-reveal>
             <Rich text={s.title} />

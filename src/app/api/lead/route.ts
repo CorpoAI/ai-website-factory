@@ -7,7 +7,7 @@ import { getSite } from '@/sites'
  * Delivery: if LEAD_WEBHOOK_URL is set, the lead is POSTed there as JSON
  * (Make/Zapier/n8n/Slack/CRM). Otherwise it is only logged — fine for demos.
  */
-const KINDS = new Set(['contact', 'quote', 'reservation'])
+const KINDS = new Set(['contact', 'quote', 'reservation', 'enrollment'])
 
 export async function POST(req: Request) {
   let body: { site?: string; kind?: string; data?: Record<string, unknown> }

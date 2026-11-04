@@ -159,7 +159,7 @@ export function Contact({ section: s, site, d }: SectionProps<ContactSection>) {
   return (
     <section id={s.id} className="section">
       <div className="container-site">
-        <div className="grid gap-16 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <h2 className="h2" data-reveal>
               <Rich text={s.title} />
@@ -219,7 +219,7 @@ export function Footer({ site, d }: { site: SiteConfig; d: Dict }) {
   const links = site.sections.filter((s) => s.nav && s.id)
   return (
     <footer className="overflow-hidden bg-inverse text-inverse-ink">
-      <div className="container-site grid gap-12 pb-10 pt-20 text-sm sm:grid-cols-2 lg:grid-cols-4">
+      <div className="container-site grid grid-cols-1 gap-12 pb-10 pt-20 text-sm sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           {b.tagline && <p className="max-w-sm font-display text-3xl leading-tight">{b.tagline}</p>}
           {b.phone && (

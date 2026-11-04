@@ -1,15 +1,18 @@
 import type { Industry, PlacedSection, Section, SiteConfig, SiteInput, ThemePreset } from './types'
 import { constructionDefaults } from './industries/construction'
+import { drivingSchoolDefaults } from './industries/driving-school'
 import { restaurantDefaults } from './industries/restaurant'
 
 const DEFAULT_PRESET: Record<Industry, ThemePreset> = {
   construction: 'industrial',
   restaurant: 'bistro',
+  'driving-school': 'road',
 }
 
 const TEMPLATES: Record<Industry, typeof constructionDefaults> = {
   construction: constructionDefaults,
   restaurant: restaurantDefaults,
+  'driving-school': drivingSchoolDefaults,
 }
 
 /**

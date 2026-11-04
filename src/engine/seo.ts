@@ -19,7 +19,7 @@ export function siteMetadata(site: SiteConfig): Metadata {
 /** schema.org LocalBusiness subtype — helps Google show hours, rating, map pin. */
 export function jsonLd(site: SiteConfig) {
   const b = site.business
-  const type = site.industry === 'restaurant' ? 'Restaurant' : 'GeneralContractor'
+  const type = { restaurant: 'Restaurant', construction: 'GeneralContractor', 'driving-school': 'DrivingSchool' }[site.industry]
   const menu = site.sections.find((s) => s.type === 'menu')
   return {
     '@context': 'https://schema.org',

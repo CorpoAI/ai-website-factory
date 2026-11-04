@@ -221,7 +221,7 @@ export function QuoteCalculator({ section: s, site, d }: SectionProps<QuoteCalcu
           {s.subtitle && <p className="mt-5 text-lg text-ink-muted">{s.subtitle}</p>}
         </div>
 
-        <div className="grid gap-px overflow-hidden rounded-theme bg-line lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-theme bg-line lg:grid-cols-12">
           <div className="space-y-12 bg-card p-6 sm:p-10 lg:col-span-7">
             {/* Step 1 */}
             <fieldset>
@@ -229,7 +229,7 @@ export function QuoteCalculator({ section: s, site, d }: SectionProps<QuoteCalcu
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink text-[11px] text-bg">1</span>
                 {d.workType}
               </legend>
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {s.workTypes.map((x) => (
                   <button
                     key={x.id}
@@ -385,7 +385,7 @@ export function Testimonials({ section: s, site, d }: SectionProps<TestimonialsS
 
   return (
     <section id={s.id} className="section bg-bg-alt">
-      <div className="container-site grid gap-12 lg:grid-cols-12">
+      <div className="container-site grid grid-cols-1 gap-12 lg:grid-cols-12">
         <div className="flex flex-col justify-between gap-10 lg:col-span-4">
           <div>
             <Kicker index={navIndex(site, s.id)} label={s.nav} />
@@ -516,7 +516,7 @@ export function Menu({ section: s, site, d }: SectionProps<MenuSection>) {
           </div>
         )}
 
-        <div className="grid gap-10 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
           <nav className="flex gap-2 overflow-x-auto no-scrollbar lg:col-span-3 lg:flex-col lg:gap-0" aria-label={s.title}>
             {s.categories.map((c, i) => (
               <button
@@ -656,7 +656,7 @@ export function Reservation({ section: s, site, d }: SectionProps<ReservationSec
 
   return (
     <section id={s.id} className="section bg-inverse text-inverse-ink">
-      <div className="container-site grid gap-16 lg:grid-cols-12">
+      <div className="container-site grid grid-cols-1 gap-16 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <Kicker index={navIndex(site, s.id)} label={s.nav} className="!text-inverse-ink/60" />
           <h2 className="h2" data-reveal>

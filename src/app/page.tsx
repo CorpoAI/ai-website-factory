@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-const INDUSTRY_LABEL = { construction: 'Budownictwo i remonty', restaurant: 'Restauracje' } as const
+const INDUSTRY_LABEL = { construction: 'Budownictwo i remonty', restaurant: 'Restauracje', 'driving-school': 'Szkoły jazdy' } as const
 
 function heroImage(s: SiteConfig) {
   const h = s.sections.find((x) => x.type === 'hero')

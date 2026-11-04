@@ -32,6 +32,8 @@ interface ThemeTokens {
   emStyle: 'italic' | 'normal'
   /** Lift dark brand colors when *emphasis* sits on a dark hero photo */
   heroEmFilter: string
+  /** Multiplier for big headings — wide display faces need less size */
+  displayScale?: number
 }
 
 export const PRESETS: Record<ThemePreset, ThemeTokens> = {
@@ -127,6 +129,30 @@ export const PRESETS: Record<ThemePreset, ThemeTokens> = {
     emStyle: 'italic',
     heroEmFilter: 'none',
   },
+  // Driving school — road signage energy: wide geometric display, asphalt + L-plate blue + highlighter lime
+  road: {
+    bg: '#f4f5f1',
+    bgAlt: '#e9ebe4',
+    card: '#ffffff',
+    ink: '#0f141c',
+    inkMuted: '#555d68',
+    line: '#d5d9d0',
+    brand: '#2448e8',
+    brandInk: '#ffffff',
+    accent: '#d7f45a',
+    inverse: '#0f141c',
+    inverseInk: '#f4f5f1',
+    radius: '14px',
+    fontDisplay: '"Unbounded", system-ui, sans-serif',
+    fontBody: '"Onest", system-ui, sans-serif',
+    displayWeight: '600',
+    displayCase: 'none',
+    displayTracking: '-0.035em',
+    displayLeading: '0.98',
+    emStyle: 'normal',
+    heroEmFilter: 'none',
+    displayScale: 0.8,
+  },
 }
 
 function hexToRgb(hex: string): string {
@@ -172,6 +198,7 @@ export function resolveTheme(theme: ThemeConfig) {
     '--display-leading': t.displayLeading,
     '--em-style': t.emStyle,
     '--hero-em-filter': t.heroEmFilter,
+    '--display-scale': String(t.displayScale ?? 1),
   }
   return { style }
 }
