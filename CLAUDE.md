@@ -54,12 +54,18 @@ All page sections are reusable components accepting props for customization:
 - Don't build a design system before there's demand
 - Don't assume a large engineering team will maintain this
 
+## Engine (read first)
+See `docs/engine.md`. One Next.js app serves many sites; each site is one config
+file in `src/sites/<slug>.ts` built with `defineSite()` on top of an industry
+template (`src/engine/industries/`). Sections live in `src/sections/` and are
+mapped in `src/sections/registry.tsx`. Themes are CSS variables (`src/engine/theme.ts`)
+— components must use theme tokens (`bg-bg`, `text-ink`, `bg-brand`…), never hard-coded colors.
+
 ## Current Priorities
-1. Complete baseline Next.js setup
-2. Add Tailwind CSS to existing components
-3. Create Sanity schemas matching docs/sanity-content-model.md
-4. Implement dynamic page routing with Sanity data
-5. Configure Vercel deployment (optional)
+1. Industry templates: construction ✓, restaurant ✓ — next: more verticals
+2. Prospect pipeline: scrape old site / Google profile → generate `src/sites/*.ts`
+3. Real photos + Vercel deployment of demos
+4. Sanity only for clients who need self-editing
 
 ## Pending Tasks
 - [x] Add Tailwind CSS configuration
@@ -71,7 +77,8 @@ All page sections are reusable components accepting props for customization:
 
 ## Quick Reference
 - Docs: `/docs/` contains architecture and planning docs
-- Components: `/src/components/` - reusable page sections
+- Sections: `/src/sections/` - reusable page sections
+- Sites: `/src/sites/` - one file per client/demo (`npm run new-site`)
 - CMS config: `/src/sanity/` - schema definitions
 - Run dev: `npm run dev` (after `npm install`)
 

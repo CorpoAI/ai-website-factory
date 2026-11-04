@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "new-site": "node scripts/new-site.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "14.2.5",

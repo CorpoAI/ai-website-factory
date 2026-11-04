@@ -1,28 +1,27 @@
 /** @type {import('tailwindcss').Config} */
+const token = (name) => `rgb(var(--c-${name}) / <alpha-value>)`
+
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}', './sites/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
-        },
+        bg: token('bg'),
+        'bg-alt': token('bg-alt'),
+        card: token('card'),
+        ink: token('ink'),
+        'ink-muted': token('ink-muted'),
+        line: token('line'),
+        brand: token('brand'),
+        'brand-ink': token('brand-ink'),
+        accent: token('accent'),
+      },
+      borderRadius: {
+        theme: 'var(--radius)',
       },
       fontFamily: {
-        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        display: 'var(--font-display)',
+        body: 'var(--font-body)',
       },
     },
   },

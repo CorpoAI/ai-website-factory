@@ -2,17 +2,14 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Professional Website',
-  description: 'Professional website for small and medium businesses',
+  title: 'AI Website Factory',
+  description: 'Silnik stron dla małych i średnich firm',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Per-site language is set on the site wrapper (`lang` attribute) in /s/[site].
   return (
-    <html lang="en">
+    <html lang="pl">
       <body>{children}</body>
     </html>
   )
