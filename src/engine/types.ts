@@ -71,6 +71,14 @@ export interface HeroSection {
   secondaryCta?: { label: string; href: string }
   /** Small trust bullets under CTA, e.g. "Gwarancja 5 lat" */
   highlights?: string[]
+  /** Restaurant: inline date/time/guests booking bar in the hero */
+  reservationBar?: boolean
+}
+
+/** Running band of short phrases (guarantees, specialties, certificates) */
+export interface MarqueeSection {
+  type: 'marquee'
+  items: string[]
 }
 
 export interface StatsSection {
@@ -81,16 +89,21 @@ export interface StatsSection {
 export interface AboutSection {
   type: 'about'
   title: string
+  eyebrow?: string
   body: string[]
   image?: ImageRef
+  /** Second, smaller overlapping image (collage) */
+  image2?: ImageRef
   bullets?: string[]
+  /** Signature line, e.g. "— Marco, szef kuchni" */
+  signature?: string
 }
 
 export interface ServicesSection {
   type: 'services'
   title: string
   subtitle?: string
-  items: { title: string; description: string; icon?: IconName; priceFrom?: string }[]
+  items: { title: string; description: string; icon?: IconName; priceFrom?: string; image?: ImageRef }[]
 }
 
 export interface ProcessSection {
@@ -125,6 +138,9 @@ export interface QuoteOption {
   /** PLN/EUR per unit, [min, max] for the "standard" finish */
   pricePerUnit: [number, number]
   unit: string
+  image?: ImageRef
+  /** Typical duration shown next to estimate, e.g. "10–14 dni" */
+  duration?: string
 }
 
 export interface QuoteCalculatorSection {
@@ -180,7 +196,7 @@ export interface TestimonialsSection {
 export interface FeaturesSection {
   type: 'features'
   title: string
-  items: { title: string; description: string; icon?: IconName }[]
+  items: { title: string; description: string; icon?: IconName; image?: ImageRef }[]
 }
 
 export interface EventsSection {
@@ -213,6 +229,7 @@ export interface ContactSection {
 
 export type Section =
   | HeroSection
+  | MarqueeSection
   | StatsSection
   | AboutSection
   | ServicesSection

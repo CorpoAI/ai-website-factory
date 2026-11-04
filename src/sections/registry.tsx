@@ -1,8 +1,8 @@
 import type { ComponentType } from 'react'
 import type { Dict } from '@/engine/i18n'
 import type { PlacedSection, SectionType, SiteConfig } from '@/engine/types'
-import { About, CTA, Events, FAQ, Features, Gallery, Hero, Process, Services, Stats, Testimonials } from './basic'
-import { Menu, Projects, QuoteCalculator, Reservation } from './interactive'
+import { About, CTA, Events, FAQ, Features, Hero, Marquee, Process, Stats } from './basic'
+import { Gallery, Menu, Projects, QuoteCalculator, Reservation, Services, Testimonials } from './interactive'
 import { Contact } from './layout'
 
 /**
@@ -12,6 +12,7 @@ import { Contact } from './layout'
  */
 const REGISTRY: Record<SectionType, ComponentType<{ section: any; site: SiteConfig; d: Dict }>> = {
   hero: Hero,
+  marquee: Marquee,
   stats: Stats,
   about: About,
   services: Services,

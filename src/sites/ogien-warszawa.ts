@@ -1,4 +1,7 @@
 import { defineSite } from '@/engine/defineSite'
+import { MEDIA } from '@/engine/media'
+
+const M = MEDIA.restaurant
 
 /**
  * EXAMPLE (fictional) — steakhouse with a fully custom section list.
@@ -30,7 +33,9 @@ export default defineSite({
       type: 'hero',
       variant: 'centered',
       eyebrow: 'Warszawa · od 2014',
-      title: 'Ogień, czas i najlepsza wołowina',
+      title: 'Ogień, czas *i najlepsza wołowina.*',
+      image: M.chefFire,
+      reservationBar: true,
       subtitle: 'Sezonujemy mięso na miejscu przez 28–45 dni i pieczemy je nad dębowym drewnem.',
       primaryCta: { label: 'Zarezerwuj stolik', href: '#rezerwacja' },
       secondaryCta: { label: 'Karta', href: '#menu' },
@@ -39,7 +44,11 @@ export default defineSite({
       type: 'about',
       id: 'o-nas',
       nav: 'O nas',
-      title: 'Kuchnia bez skrótów',
+      eyebrow: 'Od 2014',
+      title: 'Kuchnia *bez skrótów.*',
+      image: M.steakFork,
+      image2: M.interiorMoody,
+      signature: '— Szef kuchni',
       body: [
         'Pracujemy z dwoma polskimi hodowcami bydła rasy Angus i Hereford. Cały proces — od rozbioru po sezonowanie — odbywa się w naszej kuchni.',
         'Grill opalamy wyłącznie drewnem dębowym i bukowym. Do tego karta win z ponad 120 pozycjami.',
@@ -55,14 +64,15 @@ export default defineSite({
         {
           name: 'Steki',
           items: [
-            { name: 'Ribeye 400 g', description: 'sezonowany 35 dni, sól wędzona', price: '189 zł', tags: ['chef', 'gf'] },
-            { name: 'T-bone 800 g', description: 'dla dwojga, sezonowany 45 dni', price: '340 zł', tags: ['gf'] },
+            { name: 'Ribeye 400 g', description: 'sezonowany 35 dni, sól wędzona', price: '189 zł', tags: ['chef', 'gf'], image: M.steakSliced },
+            { name: 'T-bone 800 g', description: 'dla dwojga, sezonowany 45 dni', price: '340 zł', tags: ['gf'], image: M.steakFries },
             { name: 'Polędwica 250 g', description: 'masło z bone marrow', price: '165 zł', tags: ['gf'] },
           ],
         },
         {
           name: 'Dodatki',
           items: [
+            { name: 'Żeberka z wędzarni', description: '12 godzin w dymie bukowym, glazura BBQ', price: '98 zł', tags: ['gf'], image: M.ribs },
             { name: 'Frytki na łoju wołowym', price: '22 zł', tags: ['gf'] },
             { name: 'Pieczone warzywa z ognia', price: '24 zł', tags: ['vegan', 'gf'] },
             { name: 'Sos chimichurri / pieprzowy', price: '12 zł', tags: ['gf'] },
@@ -79,18 +89,18 @@ export default defineSite({
       type: 'events',
       id: 'wydarzenia',
       nav: 'Wydarzenia',
-      title: 'Najbliższe wydarzenia',
+      title: 'Przy *wspólnym* stole',
       items: [
         { title: 'Kolacja z winiarzem z Rioja', date: '14 listopada', description: '5 dań, 5 win. Liczba miejsc ograniczona do 30.' },
         { title: 'Warsztaty: stek idealny w domu', date: '28 listopada', description: 'Szef kuchni pokaże rozbiór i techniki grillowania.' },
       ],
     },
-    { type: 'gallery', title: 'Wnętrze', images: [{ alt: 'Sala' }, { alt: 'Grill' }, { alt: 'Sezonownia' }, { alt: 'Bar' }, { alt: 'Stek' }] },
+    { type: 'gallery', title: 'Wnętrze *i ogień.*', images: [M.interiorDark, M.steakSliced, M.bar, M.elegantRoom, M.chefFire] },
     {
       type: 'testimonials',
       id: 'opinie',
       nav: 'Opinie',
-      title: 'Opinie gości',
+      title: 'Opinie *gości.*',
       items: [
         { author: 'Piotr', rating: 5, date: 'październik 2026', text: 'Najlepszy ribeye, jaki jadłem w Polsce. Obsługa zna się na winie.' },
         { author: 'Agnieszka', rating: 5, date: 'październik 2026', text: 'Kolacja firmowa na 12 osób — wszystko perfekcyjnie zorganizowane.' },
@@ -101,12 +111,12 @@ export default defineSite({
       type: 'reservation',
       id: 'rezerwacja',
       nav: 'Rezerwacja',
-      title: 'Rezerwacja',
+      title: 'Zarezerwuj *wieczór.*',
       subtitle: 'W piątki i soboty rekomendujemy rezerwację z kilkudniowym wyprzedzeniem.',
       slots: ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'],
       maxGuests: 10,
     },
-    { type: 'contact', id: 'kontakt', title: 'Dojazd', map: true },
+    { type: 'contact', id: 'kontakt', title: 'Dojazd *i parking.*', subtitle: 'Parking podziemny w budynku — pierwsze 2 godziny dla gości restauracji gratis.', map: true },
   ],
   demo: { isDemo: true, preparedBy: 'AI Website Factory', note: 'Fikcyjna restauracja — przykład w repozytorium.' },
 })

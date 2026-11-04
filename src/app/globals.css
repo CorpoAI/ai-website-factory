@@ -4,18 +4,24 @@
 
 /* Fallback tokens (factory dashboard). Each site overrides them inline. */
 :root {
-  --c-bg: 250 250 249;
-  --c-bg-alt: 241 240 238;
-  --c-card: 255 255 255;
-  --c-ink: 24 24 27;
-  --c-ink-muted: 82 82 91;
-  --c-line: 228 228 231;
-  --c-brand: 79 70 229;
+  --c-bg: 244 242 237;
+  --c-bg-alt: 234 231 224;
+  --c-card: 252 251 248;
+  --c-ink: 20 20 18;
+  --c-ink-muted: 92 90 84;
+  --c-line: 216 212 202;
+  --c-brand: 20 20 18;
   --c-brand-ink: 255 255 255;
-  --c-accent: 24 24 27;
-  --radius: 10px;
-  --font-display: system-ui, sans-serif;
+  --c-accent: 20 20 18;
+  --c-inverse: 20 20 18;
+  --c-inverse-ink: 244 242 237;
+  --radius: 0px;
+  --font-display: Georgia, serif;
   --font-body: system-ui, sans-serif;
+  --display-weight: 500;
+  --display-case: none;
+  --display-tracking: -0.01em;
+  --display-leading: 1;
 }
 
 html {
@@ -27,6 +33,7 @@ body {
   color: rgb(var(--c-ink));
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -34,38 +41,102 @@ h2,
 h3,
 .font-display {
   font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  text-transform: var(--display-case);
+  letter-spacing: var(--display-tracking);
+}
+
+h1,
+h2,
+.display {
+  line-height: var(--display-leading);
+}
+
+::selection {
+  background: rgb(var(--c-brand));
+  color: rgb(var(--c-brand-ink));
 }
 
 [id] {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 4.5rem;
+}
+
+/* Scroll reveal — only hides content once JS is ready, so no-JS still shows all */
+.reveal-ready [data-reveal]:not(.is-in) {
+  opacity: 0;
+  transform: translateY(32px);
+}
+[data-reveal] {
+  transition:
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+
+/* Subtle film grain over photos — removes the "stock photo" sheen */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal-ready [data-reveal]:not(.is-in) {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @layer components {
   .container-site {
-    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+    @apply mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-12;
   }
   .section {
-    @apply py-16 sm:py-24;
+    @apply py-20 sm:py-28 lg:py-32;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold transition rounded-theme;
+    @apply inline-flex items-center justify-center gap-2.5 px-7 py-4 text-[15px] font-semibold transition duration-300 rounded-theme;
   }
   .btn-primary {
-    @apply btn bg-brand text-brand-ink hover:brightness-95;
+    @apply btn bg-brand text-brand-ink hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_rgb(var(--c-brand)/0.7)];
   }
   .btn-ghost {
-    @apply btn border border-current hover:bg-ink/5;
+    @apply btn border border-[color:color-mix(in_srgb,currentColor_35%,transparent)] hover:border-current;
   }
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-brand;
+    @apply inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em];
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-8 bg-current opacity-60;
   }
   .h2 {
-    @apply font-display text-3xl font-bold leading-tight sm:text-4xl;
+    @apply text-[2.6rem] sm:text-6xl lg:text-7xl;
   }
   .field {
-    @apply w-full border border-line bg-card px-4 py-3 text-ink outline-none transition rounded-theme focus:border-brand focus:ring-2 focus:ring-brand/25;
+    @apply w-full border-0 border-b border-line bg-transparent px-0 py-3 text-lg text-ink outline-none transition placeholder:text-ink-muted/60 focus:border-brand;
   }
   .label {
-    @apply mb-1.5 block text-sm font-medium text-ink-muted;
+    @apply block text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-muted;
+  }
+  .link-underline {
+    @apply bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_1px];
   }
 }

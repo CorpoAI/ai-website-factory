@@ -39,15 +39,23 @@ kolor z ich logo (`theme.primary`) i — jeśli trzeba — nadpisujesz sekcje:
 - `hide: ['stats']` — usuwa sekcję szablonu,
 - `sections: [...]` — pełna, własna lista sekcji (patrz `ogien-warszawa.ts`).
 
-Zdjęcia: pole `image: { src, alt }` w hero/about/projects/gallery. Brak zdjęcia =
-estetyczny placeholder w kolorach marki, więc demo wygląda dobrze od razu.
+Zdjęcia: pole `image: { src, alt }` w hero/about/services/projects/gallery/menu.
+Szablony mają domyślnie dobrane zdjęcia stockowe (`src/engine/media.ts`, Unsplash —
+licencja pozwala na użycie komercyjne). W demie dla prospekta podmień je na
+zdjęcia firmy. Brak zdjęcia lub błąd ładowania = elegancki placeholder.
+
+Akcenty w tytułach: słowa w `*gwiazdkach*` renderują się w kolorze marki
+(kursywą w motywach szeryfowych), np. `'Budujemy *na czas.* Bez dopłat.'`.
+
+Fonty są serwowane z naszej domeny (`@fontsource`, `src/engine/fonts.ts`) — bez
+Google Fonts CDN (ważne dla RODO, szczególnie w Niemczech).
 
 ## Szablony branżowe
 
 | Branża | Motywy | Sekcje specyficzne |
 |---|---|---|
-| Budownictwo / remonty | `industrial`, `modern-build` | realizacje z filtrem kategorii (+ przed/po), **kalkulator wyceny → lead**, proces współpracy, statystyki, FAQ |
-| Restauracje | `bistro`, `fine-dining` | **menu z kategoriami i filtrem wege/bez glutenu**, **rezerwacja stolika**, godziny otwarcia, galeria, wydarzenia, opinie z oceną |
+| Budownictwo / remonty | `industrial` (szyldowe, kondensowane wersaliki), `modern-build` (redakcyjny szeryf jak studio architektoniczne) | usługi jako numerowana lista z podglądem zdjęcia, mozaika realizacji z filtrem, **suwak przed/po**, **kalkulator wyceny (najpierw cena, potem kontakt)**, pasek gwarancji (marquee), liczniki, oś procesu |
+| Restauracje | `bistro` (ciepły papier, terakota), `fine-dining` (czerń, mosiądz, Garamond) | **pasek rezerwacji w hero** (data/godzina/osoby → formularz), menu z polecanymi daniami ze zdjęciami + filtr wege/bez glutenu, kolaż „o nas”, przewijana galeria, wydarzenia, duży cytat z opinii |
 
 Wspólne: hero (3 warianty), usługi, o nas, opinie, FAQ, CTA, kontakt z formularzem
 i mapą, sticky header z nawigacją, przycisk „Zadzwoń” na mobile, baner demo.

@@ -1,0 +1,64 @@
+import type { ImageRef } from './types'
+
+/**
+ * Curated stock photos (Unsplash license — free for commercial use, no
+ * attribution required). Every ID below was verified to exist and reviewed
+ * visually. Demos use these until the prospect's own photos are dropped in.
+ */
+const u = (id: string, alt: string): ImageRef => ({ src: `https://images.unsplash.com/photo-${id}?w=1600&q=75`, alt })
+
+export const MEDIA = {
+  construction: {
+    siteAerial: u('1541888946425-d81bb19240f5', 'Plac budowy z lotu ptaka'),
+    siteWorkers: u('1504307651254-35680f356dfd', 'Ekipa przy zbrojeniu stropu'),
+    rebar: u('1531834685032-c34bf0d84c77', 'Zbrojenie i rusztowania'),
+    plans: u('1503387762-592deb58ef4e', 'Projekt i kosztorys'),
+    carpenter: u('1589939705384-5185137a7f0f', 'Prace stolarskie'),
+    electrician: u('1621905251189-08b45d6a269e', 'Instalacja elektryczna'),
+    electrician2: u('1621905252507-b35492cc74b4', 'Elektryk z ekipy'),
+    demolition: u('1517581177682-a085bb7ffb15', 'Mieszkanie w trakcie remontu'),
+    houseEvening: u('1600585154340-be6161a56a0c', 'Dom jednorodzinny wieczorem'),
+    houseModern: u('1512917774080-9991f1c4c750', 'Nowoczesny dom z tarasem'),
+    housePool: u('1600596542815-ffad4c1539a9', 'Dom z basenem'),
+    houseFacade: u('1600566753190-17f0baa2a6c3', 'Elewacja z drewnem'),
+    houseVilla: u('1564013799919-ab600027ffc6', 'Dom z ogrodem'),
+    timberInterior: u('1590725140246-20acdee442be', 'Wnętrze domu szkieletowego'),
+    livingRoom: u('1600607687939-ce8a6c25118c', 'Salon po wykończeniu'),
+    livingRoom2: u('1600210492486-724fe5c67fb0', 'Jasny salon'),
+    livingClassic: u('1505691938895-1758d7feb511', 'Salon w kamienicy'),
+    minimalRoom: u('1513694203232-719a280e022f', 'Pokój po malowaniu'),
+    glassInterior: u('1600573472550-8090b5e0745e', 'Przeszklone wnętrze'),
+    kitchen: u('1556911220-bff31c812dba', 'Kuchnia'),
+    kitchen2: u('1484154218962-a197022b5858', 'Kuchnia z wyspą'),
+    openLiving: u('1560448204-e02f11c3d0e2', 'Otwarta strefa dzienna'),
+    stairs: u('1502005229762-cf1b2da7c5d6', 'Schody'),
+    bathroom: u('1584622650111-993a426fbf0a', 'Łazienka z prysznicem walk-in'),
+    bathroom2: u('1552321554-5fefe8c9ef14', 'Jasna łazienka'),
+  },
+  restaurant: {
+    tableOverhead: u('1424847651672-bf20a4b0982b', 'Stół pełen dań'),
+    interiorBright: u('1555396273-367ea4eb4db5', 'Sala restauracji'),
+    interiorDark: u('1517248135467-4c7edcad34c4', 'Wieczór w restauracji'),
+    interiorMoody: u('1590846406792-0adc7f938f1d', 'Sala wieczorem'),
+    terrace: u('1600093463592-8e36ae95ef56', 'Ogródek'),
+    bar: u('1514933651103-005eec06c04b', 'Bar'),
+    elegantRoom: u('1550966871-3ed3cdb5ed0c', 'Sala na przyjęcia'),
+    guests: u('1528605248644-14dd04022da1', 'Goście przy stole'),
+    friends: u('1592861956120-e524fc739696', 'Kolacja ze znajomymi'),
+    chefFire: u('1600565193348-f74bd3c7ccdf', 'Kuchnia na otwartym ogniu'),
+    chopping: u('1551218808-94e220e084d2', 'Przygotowanie składników'),
+    pastaRagu: u('1611270629569-8b357cb88da9', 'Pappardelle z ragù'),
+    pastaBeef: u('1551183053-bf91a1d81141', 'Makaron z wołowiną'),
+    penne: u('1621996346565-e3dbc646d9a9', 'Penne all’arrabbiata'),
+    spaghettiClams: u('1595295333158-4742f28fbd85', 'Spaghetti z owocami morza'),
+    spaghettiShrimp: u('1563379926898-05f4575a45d8', 'Spaghetti z krewetkami'),
+    caprese: u('1592417817098-8fd3d9eb14a5', 'Sałatka z pomidorami'),
+    tiramisu: u('1571877227200-a0d98ea607e9', 'Tiramisu'),
+    pizza: u('1565299624946-b28f40a0ae38', 'Pizza'),
+    pizzaShare: u('1600628421060-939639517883', 'Pizza do podziału'),
+    steakSliced: u('1558030006-450675393462', 'Stek sezonowany'),
+    steakFork: u('1529692236671-f1f6cf9683ba', 'Stek prosto z grilla'),
+    steakFries: u('1600891964092-4316c288032e', 'Stek z frytkami'),
+    ribs: u('1544025162-d76694265947', 'Żeberka'),
+  },
+}

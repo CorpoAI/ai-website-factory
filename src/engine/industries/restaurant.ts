@@ -1,4 +1,7 @@
+import { MEDIA } from '../media'
 import type { BusinessInfo, PlacedSection } from '../types'
+
+const M = MEDIA.restaurant
 
 /**
  * Restaurant template.
@@ -12,7 +15,9 @@ export function restaurantDefaults(b: BusinessInfo): PlacedSection[] {
       type: 'hero',
       variant: 'image',
       eyebrow: `${b.city}${b.street ? ` · ${b.street}` : ''}`,
-      title: b.tagline ?? 'Kuchnia sezonowa, która smakuje jak u siebie',
+      title: 'Kuchnia, *która smakuje jak u siebie.*',
+      image: M.tableOverhead,
+      reservationBar: true,
       subtitle: 'Świeże produkty od lokalnych dostawców, domowe makarony i wino, które warto odkryć.',
       primaryCta: { label: 'Zarezerwuj stolik', href: '#rezerwacja' },
       secondaryCta: { label: 'Zobacz menu', href: '#menu' },
@@ -21,7 +26,10 @@ export function restaurantDefaults(b: BusinessInfo): PlacedSection[] {
       type: 'about',
       id: 'o-nas',
       nav: 'O nas',
-      title: 'Gotujemy z tego, co akurat najlepsze',
+      eyebrow: 'Nasza kuchnia',
+      title: 'Gotujemy z tego, *co akurat najlepsze.*',
+      image: M.interiorBright,
+      image2: M.chopping,
       body: [
         'Nasze menu zmienia się razem z porami roku. Warzywa bierzemy od rolników spod miasta, makaron robimy codziennie rano, a pieczywo wypiekamy na miejscu.',
         'To miejsce na długą kolację ze znajomymi, szybki lunch w tygodniu i rodzinny obiad w niedzielę.',
@@ -38,7 +46,7 @@ export function restaurantDefaults(b: BusinessInfo): PlacedSection[] {
         {
           name: 'Przystawki',
           items: [
-            { name: 'Burrata z pomidorami', description: 'pomidory malinowe, bazylia, oliwa z pierwszego tłoczenia', price: '42 zł', tags: ['vege', 'gf'] },
+            { name: 'Burrata z pomidorami', description: 'pomidory malinowe, bazylia, oliwa z pierwszego tłoczenia', price: '42 zł', tags: ['vege', 'gf'], image: M.caprese },
             { name: 'Tatar wołowy', description: 'żółtko, kapary, marynowana szalotka, grzanka', price: '48 zł', tags: ['chef'] },
             { name: 'Zupa dnia', description: 'zapytaj obsługę', price: '24 zł' },
           ],
@@ -46,7 +54,7 @@ export function restaurantDefaults(b: BusinessInfo): PlacedSection[] {
         {
           name: 'Dania główne',
           items: [
-            { name: 'Tagliatelle z ragù', description: 'wolno duszona wołowina, parmezan 24 mies.', price: '54 zł', tags: ['chef'] },
+            { name: 'Tagliatelle z ragù', description: 'wolno duszona wołowina, parmezan 24 mies.', price: '54 zł', tags: ['chef'], image: M.pastaRagu },
             { name: 'Risotto z grzybami leśnymi', description: 'masło szałwiowe, pecorino', price: '52 zł', tags: ['vege', 'gf'] },
             { name: 'Pierś z kaczki', description: 'puree z pieczonej dyni, sos wiśniowy', price: '72 zł', tags: ['gf'] },
             { name: 'Pstrąg z pieca', description: 'masło cytrynowe, młode ziemniaki, fasolka', price: '64 zł', tags: ['gf'] },
@@ -55,7 +63,7 @@ export function restaurantDefaults(b: BusinessInfo): PlacedSection[] {
         {
           name: 'Desery',
           items: [
-            { name: 'Tiramisu', description: 'klasyczne, z mascarpone', price: '28 zł', tags: ['vege'] },
+            { name: 'Tiramisu', description: 'klasyczne, z mascarpone', price: '28 zł', tags: ['vege'], image: M.tiramisu },
             { name: 'Sernik baskijski', description: 'z sosem z sezonowych owoców', price: '26 zł', tags: ['vege', 'gf'] },
           ],
         },
@@ -71,24 +79,24 @@ export function restaurantDefaults(b: BusinessInfo): PlacedSection[] {
     },
     {
       type: 'features',
-      title: 'Na każdą okazję',
+      title: 'Na lunch, na randkę, *na wielką rodzinę.*',
       items: [
-        { icon: 'clock', title: 'Lunch w tygodniu', description: 'Pon–Pt 12:00–15:00 — zupa + danie dnia w stałej cenie.' },
-        { icon: 'users', title: 'Przyjęcia i imprezy', description: 'Sala do 40 osób: urodziny, komunie, spotkania firmowe. Menu ustalamy razem.' },
-        { icon: 'truck', title: 'Na wynos', description: 'Zamów telefonicznie i odbierz po 20 minutach.' },
+        { icon: 'clock', image: M.pastaBeef, title: 'Lunch w tygodniu', description: 'Pon–Pt 12:00–15:00 — zupa + danie dnia w stałej cenie.' },
+        { icon: 'users', image: M.friends, title: 'Przyjęcia i imprezy', description: 'Sala do 40 osób: urodziny, komunie, spotkania firmowe. Menu ustalamy razem.' },
+        { icon: 'truck', image: M.pizzaShare, title: 'Na wynos', description: 'Zamów telefonicznie i odbierz po 20 minutach.' },
       ],
     },
     {
       type: 'gallery',
       id: 'galeria',
-      title: 'Zajrzyj do nas',
-      images: [{ alt: 'Sala' }, { alt: 'Danie' }, { alt: 'Bar' }, { alt: 'Kuchnia' }, { alt: 'Deser' }],
+      title: 'Zajrzyj *do środka.*',
+      images: [M.interiorBright, M.spaghettiClams, M.bar, M.terrace, M.guests, M.penne],
     },
     {
       type: 'testimonials',
       id: 'opinie',
       nav: 'Opinie',
-      title: 'Goście o nas',
+      title: 'Goście *o nas.*',
       items: [
         { author: 'Kasia M.', rating: 5, date: 'październik 2026', text: 'Najlepsze tagliatelle w mieście. Obsługa przemiła, a tiramisu — obowiązkowo!' },
         { author: 'Michał', rating: 5, date: 'wrzesień 2026', text: 'Byliśmy na kolacji rocznicowej. Świetne wino polecone przez kelnera i super klimat.' },
@@ -99,7 +107,7 @@ export function restaurantDefaults(b: BusinessInfo): PlacedSection[] {
       type: 'reservation',
       id: 'rezerwacja',
       nav: 'Rezerwacja',
-      title: 'Zarezerwuj stolik',
+      title: 'Zarezerwuj *stolik.*',
       subtitle: 'Potwierdzimy rezerwację SMS-em lub telefonicznie. Dla grup powyżej 8 osób zadzwoń do nas.',
       slots: ['12:00', '13:00', '14:00', '17:00', '18:00', '18:30', '19:00', '19:30', '20:00', '21:00'],
       maxGuests: 8,
@@ -108,7 +116,7 @@ export function restaurantDefaults(b: BusinessInfo): PlacedSection[] {
       type: 'contact',
       id: 'kontakt',
       nav: 'Kontakt',
-      title: 'Jak do nas trafić',
+      title: 'Jak *do nas trafić.*',
       map: true,
       form: false,
     },

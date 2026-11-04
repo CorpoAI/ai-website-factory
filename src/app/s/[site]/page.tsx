@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import '@/engine/fonts'
 import { t } from '@/engine/i18n'
 import { jsonLd, siteMetadata } from '@/engine/seo'
 import { resolveTheme } from '@/engine/theme'
-import { DemoBanner, Footer, Header, MobileCallBar } from '@/sections/layout'
+import { Footer, Header, MobileBar } from '@/sections/layout'
+import { RevealObserver } from '@/sections/motion'
 import { RenderSections } from '@/sections/registry'
 import { SITES, getSite } from '@/sites'
 
@@ -23,20 +25,22 @@ export default function SitePage({ params }: { params: { site: string } }) {
   if (!site) notFound()
 
   const d = t(site.locale)
-  const { style, fontsHref } = resolveTheme(site.theme)
+  const { style } = resolveTheme(site.theme)
+  const first = site.sections[0]
+  // Transparent header only over full-bleed photo heroes
+  const overlay = first?.type === 'hero' && (first.variant ?? 'image') !== 'split'
 
   return (
-    <div lang={site.locale} style={style as React.CSSProperties} className="min-h-screen bg-bg font-body text-ink">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link rel="stylesheet" href={fontsHref} />
+    <div data-site-root lang={site.locale} style={style as React.CSSProperties} className="min-h-screen bg-bg font-body text-ink">
+      <link rel="preconnect" href="https://images.unsplash.com" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(site)) }} />
-      <DemoBanner site={site} d={d} />
-      <Header site={site} d={d} />
+      <Header site={site} d={d} overlay={overlay} />
       <main>
         <RenderSections site={site} d={d} />
       </main>
       <Footer site={site} d={d} />
-      <MobileCallBar site={site} d={d} />
+      <MobileBar site={site} d={d} />
+      <RevealObserver />
     </div>
   )
 }

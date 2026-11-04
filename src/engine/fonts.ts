@@ -1,0 +1,27 @@
+/**
+ * Self-hosted fonts (served from our own domain, no Google Fonts CDN —
+ * avoids the GDPR issue German courts flagged for Google-hosted fonts).
+ * @font-face uses unicode-range, so browsers only download what a page uses.
+ */
+import '@fontsource/big-shoulders-display/700'
+import '@fontsource/big-shoulders-display/800'
+import '@fontsource/big-shoulders-display/900'
+import '@fontsource/ibm-plex-sans/400'
+import '@fontsource/ibm-plex-sans/500'
+import '@fontsource/ibm-plex-sans/600'
+import '@fontsource/instrument-serif/400'
+import '@fontsource/instrument-serif/400-italic'
+import '@fontsource/instrument-sans/400'
+import '@fontsource/instrument-sans/500'
+import '@fontsource/instrument-sans/600'
+import '@fontsource/gloock/400'
+import '@fontsource/hanken-grotesk/400'
+import '@fontsource/hanken-grotesk/500'
+import '@fontsource/hanken-grotesk/600'
+import '@fontsource/hanken-grotesk/700'
+import '@fontsource/cormorant-garamond/500'
+import '@fontsource/cormorant-garamond/500-italic'
+import '@fontsource/cormorant-garamond/600'
+import '@fontsource/jost/300'
+import '@fontsource/jost/400'
+import '@fontsource/jost/500'

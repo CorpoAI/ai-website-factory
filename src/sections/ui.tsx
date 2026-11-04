@@ -1,8 +1,11 @@
+import { Fragment } from 'react'
 import type { Dict } from '@/engine/i18n'
-import type { IconName, ImageRef, SiteConfig } from '@/engine/types'
+import type { IconName, SiteConfig } from '@/engine/types'
+
+export { Picture } from './Picture'
 
 export interface SectionProps<T> {
-  section: T & { id?: string }
+  section: T & { id?: string; nav?: string }
   site: SiteConfig
   d: Dict
 }
@@ -31,15 +34,23 @@ const ICONS: Record<IconName, string> = {
 
 export function Icon({ name, className = 'h-6 w-6' }: { name: IconName; className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
       <path d={ICONS[name]} />
     </svg>
   )
 }
 
-export function Stars({ value, className = 'h-4 w-4' }: { value: number; className?: string }) {
+export function Arrow({ className = 'h-4 w-4' }: { className?: string }) {
   return (
-    <span className="inline-flex gap-0.5 text-brand" aria-label={`${value}/5`}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className={className} aria-hidden>
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  )
+}
+
+export function Stars({ value, className = 'h-3.5 w-3.5' }: { value: number; className?: string }) {
+  return (
+    <span className="inline-flex gap-0.5" aria-label={`${value}/5`}>
       {[1, 2, 3, 4, 5].map((i) => (
         <svg key={i} viewBox="0 0 24 24" className={className} fill={i <= Math.round(value) ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth={1.5}>
           <path d={ICONS.star} />
@@ -50,44 +61,50 @@ export function Stars({ value, className = 'h-4 w-4' }: { value: number; classNa
 }
 
 /**
- * Image with a designed fallback. Demos for prospects often start without
- * photos; the placeholder keeps the layout honest and on-brand until real
- * images (from the prospect's old site / Google profile) are dropped in.
+ * Editorial emphasis: wrap words in *asterisks* in any title to render them
+ * in italic brand color — e.g. "Budujemy *solidnie*".
  */
-export function Picture({ image, className = '', label }: { image?: ImageRef; className?: string; label?: string }) {
-  if (image?.src) {
-    return <img src={image.src} alt={image.alt ?? ''} className={`h-full w-full object-cover ${className}`} loading="lazy" />
-  }
-  const text = label ?? image?.alt
+export function Rich({ text }: { text: string }) {
+  const parts = text.split(/\*(.+?)\*/g)
   return (
-    <div
-      className={`relative flex h-full w-full items-end overflow-hidden bg-gradient-to-br from-brand/80 via-accent/80 to-ink/90 ${className}`}
-      role="img"
-      aria-label={text ?? ''}
-    >
-      <svg className="absolute inset-0 h-full w-full opacity-[0.12]" aria-hidden>
-        <defs>
-          <pattern id="pp" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
-            <line x1="0" y1="0" x2="0" y2="22" stroke="white" strokeWidth="6" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#pp)" />
-      </svg>
-      {text && <span className="relative m-3 rounded-full bg-black/35 px-3 py-1 text-xs font-medium text-white backdrop-blur">{text}</span>}
-    </div>
+    <>
+      {parts.map((p, i) =>
+        i % 2 ? (
+          <em key={i} className="text-brand [font-style:var(--em-style,italic)]">
+            {p}
+          </em>
+        ) : (
+          <Fragment key={i}>{p}</Fragment>
+        ),
+      )}
+    </>
   )
 }
 
-export function SectionHeading({ eyebrow, title, subtitle, center }: { eyebrow?: string; title: string; subtitle?: string; center?: boolean }) {
+/** Section label like "02 — Realizacje" */
+export function Kicker({ index, label, className = '' }: { index?: number; label?: string; className?: string }) {
+  if (!label) return null
   return (
-    <div className={`mb-10 max-w-2xl sm:mb-14 ${center ? 'mx-auto text-center' : ''}`}>
-      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-      <h2 className="h2">{title}</h2>
-      {subtitle && <p className="mt-4 text-lg text-ink-muted">{subtitle}</p>}
-    </div>
+    <p className={`mb-6 flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink-muted ${className}`} data-reveal>
+      {index !== undefined && <span className="text-brand">{String(index).padStart(2, '0')}</span>}
+      <span className="h-px w-10 bg-current opacity-40" />
+      {label}
+    </p>
   )
 }
 
 export function telHref(phone?: string) {
   return phone ? `tel:${phone.replace(/[^+\d]/g, '')}` : undefined
+}
+
+export function fullAddress(site: SiteConfig) {
+  const b = site.business
+  return [b.street, [b.postalCode, b.city].filter(Boolean).join(' ')].filter(Boolean).join(', ')
+}
+
+/** Index of a section among those with a nav label — used for "01 / 02" kickers. */
+export function navIndex(site: SiteConfig, id?: string) {
+  if (!id) return undefined
+  const i = site.sections.filter((s) => s.nav).findIndex((s) => s.id === id)
+  return i >= 0 ? i + 1 : undefined
 }
