@@ -4,6 +4,7 @@ import type { PlacedSection, SectionType, SiteConfig } from '@/engine/types'
 import { About, CTA, Events, FAQ, Features, Hero, Marquee, Process, Stats } from './basic'
 import { Gallery, Menu, Projects, QuoteCalculator, Reservation, Services, Testimonials } from './interactive'
 import { Courses, LicenceCost, PassRate, Team } from './driving'
+import { FirstSteps, FuneralCost, Obituaries } from './funeral'
 import { Contact } from './layout'
 
 /**
@@ -31,6 +32,9 @@ const REGISTRY: Record<SectionType, ComponentType<{ section: any; site: SiteConf
   courses: Courses,
   licenceCost: LicenceCost,
   team: Team,
+  firstSteps: FirstSteps,
+  obituaries: Obituaries,
+  funeralCost: FuneralCost,
   cta: CTA,
   contact: Contact,
 }

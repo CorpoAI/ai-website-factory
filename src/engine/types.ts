@@ -8,7 +8,7 @@
  */
 
 export type Locale = 'pl' | 'de' | 'en'
-export type Industry = 'construction' | 'restaurant' | 'driving-school'
+export type Industry = 'construction' | 'restaurant' | 'driving-school' | 'funeral'
 
 /** An image is optional everywhere — sections fall back to a styled placeholder. */
 export interface ImageRef {
@@ -47,7 +47,7 @@ export interface BusinessInfo {
   rating?: { value: number; count: number; source?: string }
 }
 
-export type ThemePreset = 'industrial' | 'modern-build' | 'bistro' | 'fine-dining' | 'road'
+export type ThemePreset = 'industrial' | 'modern-build' | 'bistro' | 'fine-dining' | 'road' | 'serene'
 
 export interface ThemeConfig {
   preset: ThemePreset
@@ -267,6 +267,49 @@ export interface TeamSection {
   fleet?: { name: string; detail: string; image?: ImageRef }[]
 }
 
+/* ---------------- Funeral home ---------------- */
+
+/** "What to do when someone dies" — branching guide + 24h contact. */
+export interface FirstStepsSection {
+  type: 'firstSteps'
+  title: string
+  subtitle?: string
+  scenarios: { id: string; label: string; steps: { title: string; description: string }[] }[]
+  /** Short reassurance shown next to the 24h phone */
+  reassurance?: string
+}
+
+export interface Obituary {
+  name: string
+  /** e.g. "lat 84" */
+  age?: string
+  died: string
+  ceremony: { date: string; time: string; place: string }
+  note?: string
+}
+
+export interface ObituariesSection {
+  type: 'obituaries'
+  title: string
+  subtitle?: string
+  items: Obituary[]
+  /** Disclaimer, e.g. "Przykładowe wpisy" in demos */
+  note?: string
+}
+
+/** Funeral cost estimate with the state funeral allowance (ZUS) deducted. */
+export interface FuneralCostSection {
+  type: 'funeralCost'
+  title: string
+  subtitle?: string
+  currency: 'PLN' | 'EUR'
+  types: { id: string; label: string; description: string; base: number; includes: string[] }[]
+  extras: { id: string; label: string; price: number }[]
+  /** State allowance, e.g. ZUS zasiłek pogrzebowy 7000 zł (2026) */
+  allowance?: { label: string; amount: number; note?: string }
+  note?: string
+}
+
 export interface FAQSection {
   type: 'faq'
   title: string
@@ -309,6 +352,9 @@ export type Section =
   | CoursesSection
   | LicenceCostSection
   | TeamSection
+  | FirstStepsSection
+  | ObituariesSection
+  | FuneralCostSection
   | CTASection
   | ContactSection
 

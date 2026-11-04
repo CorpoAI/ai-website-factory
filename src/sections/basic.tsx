@@ -324,6 +324,7 @@ export function Features({ section: s }: SectionProps<FeaturesSection>) {
 /* ------------------------------------------------------------------ */
 
 export function Events({ section: s, site }: SectionProps<EventsSection>) {
+  const booking = site.sections.find((x) => x.type === 'reservation')?.id
   return (
     <section id={s.id} className="section">
       <div className="container-site grid grid-cols-1 gap-12 lg:grid-cols-12">
@@ -337,7 +338,7 @@ export function Events({ section: s, site }: SectionProps<EventsSection>) {
           {s.items.map((e) => {
             const [day, ...rest] = e.date.split(' ')
             return (
-              <article key={e.title} className="group grid grid-cols-[90px_1fr] gap-6 py-8 sm:grid-cols-[130px_1fr_auto]" data-reveal>
+              <article key={e.title} className={`group grid grid-cols-[minmax(90px,auto)_1fr] gap-6 py-8 ${booking ? 'sm:grid-cols-[minmax(130px,auto)_1fr_auto]' : 'sm:grid-cols-[minmax(130px,auto)_1fr]'}`} data-reveal>
                 <p className="font-display leading-none">
                   <span className="block text-6xl text-brand">{day}</span>
                   <span className="text-sm uppercase tracking-[0.18em] text-ink-muted">{rest.join(' ')}</span>
@@ -346,9 +347,9 @@ export function Events({ section: s, site }: SectionProps<EventsSection>) {
                   <h3 className="text-3xl">{e.title}</h3>
                   <p className="mt-2 text-ink-muted">{e.description}</p>
                 </div>
-                <a href="#rezerwacja" className="hidden self-center rounded-full border border-line p-4 transition group-hover:border-brand group-hover:bg-brand group-hover:text-brand-ink sm:block" aria-label={e.title}>
+                {booking && <a href={`#${booking}`} className="hidden self-center rounded-full border border-line p-4 transition group-hover:border-brand group-hover:bg-brand group-hover:text-brand-ink sm:block" aria-label={e.title}>
                   <Arrow className="h-5 w-5" />
-                </a>
+                </a>}
               </article>
             )
           })}

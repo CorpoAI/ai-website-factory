@@ -85,12 +85,14 @@ export function MobileBar({ site, d }: { site: SiteConfig; d: Dict }) {
   const scrolled = useScrolled(500)
   const b = site.business
   const hero = site.sections.find((s) => s.type === 'hero')
-  const cta = hero?.type === 'hero' ? hero.primaryCta : undefined
+  const heroCta = hero?.type === 'hero' ? hero.primaryCta : undefined
+  // If the main CTA already is a phone call, show a single full-width call button
+  const cta = heroCta?.href.startsWith('tel:') ? undefined : heroCta
   if (!b.phone && !cta) return null
   return (
     <div className={`fixed inset-x-3 bottom-3 z-40 grid grid-cols-2 gap-2 transition duration-500 sm:hidden ${scrolled ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-20 opacity-0'}`}>
       {b.phone && (
-        <a href={telHref(b.phone)} className="btn !py-3.5 bg-ink text-bg shadow-xl">
+        <a href={telHref(b.phone)} className={`btn !py-3.5 bg-ink text-bg shadow-xl ${cta ? '' : 'col-span-2'}`}>
           {d.call}
         </a>
       )}

@@ -2,7 +2,7 @@
 /**
  * Scaffold a new site/demo from an industry template.
  *
- *   npm run new-site -- <construction|restaurant|driving-school> <slug> "<Business name>" "<City>"
+ *   npm run new-site -- <construction|restaurant|driving-school|funeral> <slug> "<Business name>" "<City>"
  *
  * Creates src/sites/<slug>.ts and registers it in src/sites/index.ts.
  * Then fill in real data (phone, address, services, menu, photos…).
@@ -11,9 +11,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 const [industry, slug, name, city] = process.argv.slice(2)
-const INDUSTRIES = ['construction', 'restaurant', 'driving-school']
+const INDUSTRIES = ['construction', 'restaurant', 'driving-school', 'funeral']
 if (!INDUSTRIES.includes(industry) || !slug || !name || !city) {
-  console.error('Usage: npm run new-site -- <construction|restaurant|driving-school> <slug> "<Business name>" "<City>"')
+  console.error('Usage: npm run new-site -- <construction|restaurant|driving-school|funeral> <slug> "<Business name>" "<City>"')
   process.exit(1)
 }
 if (!/^[a-z0-9-]+$/.test(slug)) {
@@ -28,7 +28,7 @@ if (fs.existsSync(file)) {
   process.exit(1)
 }
 
-const preset = { construction: 'industrial', restaurant: 'bistro', 'driving-school': 'road' }[industry]
+const preset = { construction: 'industrial', restaurant: 'bistro', 'driving-school': 'road', funeral: 'serene' }[industry]
 const q = (s) => JSON.stringify(s).replace(/^"|"$/g, '').replace(/'/g, "\\'")
 fs.writeFileSync(
   file,

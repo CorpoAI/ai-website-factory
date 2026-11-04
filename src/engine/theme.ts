@@ -153,6 +153,30 @@ export const PRESETS: Record<ThemePreset, ThemeTokens> = {
     heroEmFilter: 'none',
     displayScale: 0.8,
   },
+  // Funeral home — quiet, dignified: warm ivory, slate ink, deep sage, muted brass
+  serene: {
+    bg: '#f5f2ec',
+    bgAlt: '#ebe6dd',
+    card: '#fbf9f5',
+    ink: '#24282b',
+    inkMuted: '#5f6461',
+    line: '#d9d3c8',
+    brand: '#43554b',
+    brandInk: '#f5f2ec',
+    accent: '#9a8458',
+    inverse: '#22292a',
+    inverseInk: '#f2eee6',
+    radius: '2px',
+    fontDisplay: '"Newsreader", Georgia, serif',
+    fontBody: '"Public Sans", system-ui, sans-serif',
+    displayWeight: '400',
+    displayCase: 'none',
+    displayTracking: '-0.015em',
+    displayLeading: '1.02',
+    emStyle: 'italic',
+    heroEmFilter: 'brightness(1.9) saturate(0.9)',
+    displayScale: 0.9,
+  },
 }
 
 function hexToRgb(hex: string): string {

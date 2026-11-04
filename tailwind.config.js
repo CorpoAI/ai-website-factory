@@ -27,11 +27,13 @@ module.exports = {
         marquee: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },
         'rise-in': { from: { opacity: '0', transform: 'translateY(28px)' }, to: { opacity: '1', transform: 'none' } },
         'slow-zoom': { from: { transform: 'scale(1.08)' }, to: { transform: 'scale(1)' } },
+        flicker: { '0%,100%': { transform: 'scaleY(1) skewX(0deg)', opacity: '1' }, '50%': { transform: 'scaleY(0.92) skewX(2deg)', opacity: '0.85' } },
       },
       animation: {
         marquee: 'marquee 38s linear infinite',
         'rise-in': 'rise-in 0.9s cubic-bezier(.2,.7,.2,1) both',
         'slow-zoom': 'slow-zoom 2.4s cubic-bezier(.2,.7,.2,1) both',
+        flicker: 'flicker 1.6s ease-in-out infinite',
       },
     },
   },
